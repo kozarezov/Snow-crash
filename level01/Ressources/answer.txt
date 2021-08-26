@@ -1,0 +1,30 @@
+Вводим команду для перехода к следующему уровню
+
+>>su level01
+>>x24ti5gi3x0ol2eh4esiuxias (токен полученный на предыдущем уровне)
+
+получаем хэш пароля
+
+>>cat /etc/passwd | grep flag01
+
+копируем хэш пароля по ssh из виртуальной машины, для этого пишем команду из терминала основной сессии
+
+>>scp -P 4242 level01@192.168.0.11:/etc/passwd .
+>>x24ti5gi3x0ol2eh4esiuxias
+
+Полученный файл декодируем через программу John Ripper
+
+>>brew install john
+>>sudo john ./passwd
+>>sudo john -show ./passwd
+
+Получили пароль abcdefg
+
+>>su flag01
+>>abcdefg
+
+Запускаем команду 
+
+>>getflag
+
+Получили токен: f2av5il02puano7naaf6adaaf
