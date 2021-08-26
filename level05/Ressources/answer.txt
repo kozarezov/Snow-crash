@@ -17,4 +17,4 @@
 
 >>cat /dev/shm/flag
 
-Получили токен ne2searoevaevoem4ov4ar8ap
+Получили токен viuaaale9huek52boumoomioc
